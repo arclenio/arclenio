@@ -2,7 +2,7 @@
 	
 	"use strict";
 	
-	//Hide Loading Box (Preloader)
+	//(Preloader)
 	function handlePreloader() {
 		if($('.loading-area').length){
 			$('.loading-area').delay(200).fadeOut(500);
@@ -26,8 +26,24 @@
 		}
 	}
 	
+const links = document.querySelectorAll(".nav-link");
+
+links.forEach((item)=>{
+
+item.addEventListener("click",()=>
+{
+
+let el = document.getElementById(item.getAttribute("data-link"));
+el.scrollIntoView({behavior:"smooth",block:"start"});
+})
+})
+
+
+
+
 	headerStyle();
 	
+
 	
 	
 	
@@ -257,42 +273,7 @@
 		});    		
 	}
 	
-	
-	
-	
-	// Sponsors Item Carousel
-	if ($('.sponsors-carousel').length) {
-		$('.sponsors-carousel').owlCarousel({
-			loop:true,
-			margin:30,
-			nav:true,
-			smartSpeed: 500,
-			autoplay: 4000,
-			navText: [ '<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>' ],
-			responsive:{
-				0:{
-					items:1
-				},
-				480:{
-					items:2
-				},
-				600:{
-					items:3
-				},
-				800:{
-					items:4
-				},
-				1024:{
-					items:5
-				}
-			}
-		});    		
-	}
-	
-	
-	
-	
-	//Product Carousel
+	// Carousel
 	if ($('.project-carousel').length) {
 		$('.project-carousel').owlCarousel({
 			loop:true,
@@ -327,8 +308,6 @@
 		});    		
 	}
 	
-	
-	//Product Tabs
 	if($('.project-tab').length){
 		$('.project-tab .product-tab-btns .p-tab-btn').on('click', function(e) {
 			e.preventDefault();
@@ -344,11 +323,7 @@
 			}
 		});
 	}
-	
-	
-	
-	
-	//Tabs Box
+
 	if($('.tabs-box').length){
 		$('.tabs-box .tab-buttons .tab-btn').on('click', function(e) {
 			e.preventDefault();
@@ -367,17 +342,12 @@
 		});
 	}
 	
-	
-	
-	
-	//Gallery Filters
+
 	if($('.filter-list').length){
 		$('.filter-list').mixItUp({});
 	}
 	
 	
-	
-	//LightBox / Fancybox
 	if($('.lightbox-image').length) {
 		$('.lightbox-image').fancybox({
 			openEffect  : 'fade',
@@ -388,29 +358,9 @@
 		});
 	}
 	
-
-	
-	//Contact Form Validation
-	if($('#contact-form').length){
-		$('#contact-form').validate({
-			rules: {
-				phone: {
-					required: true
-				},
-				email: {
-					required: true,
-					email: true
-				},
-				message: {
-					required: true
-				}
-			}
-		});
-	}
 	
 	
-	
-	// Scroll to a Specific Div
+	// Scroll
 	if($('.scroll-to-target').length){
 		$(".scroll-to-target").on('click', function() {
 			var target = $(this).attr('data-target');
@@ -421,35 +371,27 @@
 	
 		});
 	}
+
+
+
 	
 	
-	
-	// Elements Animation
 	if($('.wow').length){
 		var wow = new WOW(
 		  {
-			boxClass:     'wow',      // animated element css class (default is wow)
-			animateClass: 'animated', // animation css class (default is animated)
-			offset:       0,          // distance to the element when triggering the animation (default is 0)
-			mobile:       true,       // trigger animations on mobile devices (default is true)
-			live:         true       // act on asynchronously loaded content (default is true)
+			boxClass:     'wow',      
+			animateClass: 'animated', 
+			offset:       0,          
+			mobile:       true,       
+			live:         true      
 		  }
 		);
 		wow.init();
 	}
-
-
-/* ==========================================================================
-   When document is Scrollig, do
-   ========================================================================== */
 	
 	$(window).on('scroll', function() {
 		headerStyle();
 	});
-	
-/* ==========================================================================
-   When document is loading, do
-   ========================================================================== */
 	
 	$(window).on('load', function() {
 		handlePreloader();
